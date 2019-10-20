@@ -1,0 +1,19 @@
+{
+  "name": "go-klippings-ui",
+  "version": "0.0.1",
+  "description": "UI for managing kindle clippings",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/andyinabox/go-klippings-ui.git"
+  },
+  "author": "Andy Dayton <amdayton@gmail.com> (http://andydayton.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andyinabox/go-klippings-ui/issues"
+  },
+  "homepage": "https://github.com/andyinabox/go-klippings-ui#readme"
+}
