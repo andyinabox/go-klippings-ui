@@ -23,8 +23,10 @@
     "date-fns": "^2.5.1",
     "dotenv-webpack": "^1.7.0",
     "prop-types": "^15.7.2",
+    "rc-upload": "^2.8.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-modal": "^3.10.1",
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
