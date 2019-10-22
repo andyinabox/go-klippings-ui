@@ -1,17 +1,27 @@
 import React from 'react';
 import { cleanup, fireEvent, render } from '@testing-library/react';
-import App from './App'
+import axios from 'axios'
 
+import App from './App'
 
 afterEach(cleanup);
 
-test('App should be a function', () => {
-  expect(typeof App).toBe('function');
+it('should be a function', () => {
+  expect(App instanceof Function).toBeTruthy()
 });
 
+it('should be able to acces the API_HOST env var', () => {
+  expect(process.env.API_HOST).toBeTruthy()
+})
 
-test("Let's try some DOM testing", () => {
-  const { getByText } = render(<App />)
-  console.log(getByText("Welcome to React!"))
-  expect(getByText("Welcome to React!")).toBeTruthy()
+describe('GET /api', () => {
+  it('should recieve a 200 status', () => {
+    expect.assertions(1)
+    const url = process.env.API_HOST + '/api';
+    return axios.get(url)
+      .then(({ status }) => {
+        expect(status).toBe(200)
+      })
+      .catch(error => { console.log(error) })
+  })
 })

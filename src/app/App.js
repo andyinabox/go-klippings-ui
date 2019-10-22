@@ -4,12 +4,14 @@ import React from "react";
 
 // Modal.setAppElement("#app")
 
-function App() {
-  return (
-    <header id="header" className="header-fs">
-      <h1 className="text-lg">Welcome to React!</h1>
-    </header>
-  );
+import LayoutHeader from './components/LayoutHeader'
+
+class App extends React.Component {
+  render() {
+    return (
+      <LayoutHeader />
+    );
+  }
 }
 
 export default App;
