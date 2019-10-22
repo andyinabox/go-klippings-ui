@@ -14,6 +14,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from "react-router-dom";
 
 import LayoutHeader from './components/LayoutHeader'
@@ -46,7 +47,7 @@ class App extends React.Component {
           <Router>
             <LayoutHeader />
             <Switch>
-              <Route exact path="/">
+              <Route exact path="/home">
                 <ViewClippings />
               </Route>
               <Route path="/authors">
@@ -54,6 +55,9 @@ class App extends React.Component {
               </Route>
               <Route path="/titles">
                 <ViewTitles />
+              </Route>
+              <Route exact path="/">
+                <Redirect to="/home" />
               </Route>
             </Switch>
           </Router>
