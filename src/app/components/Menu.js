@@ -1,13 +1,13 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 export default class Menu extends React.Component {
   render() {
     return (
-      <nav role="navigation" class="nav-main">
-        <a href ="/clippings" class="nav-btn">Clippings</a>
-        <a href="/titles" class="nav-btn">Titles</a>
-        <a href="/authors" class="nav-btn">Authors</a>
-        <a class="nav-btn">Upload</a>
+      <nav role="navigation" className="nav-main">
+        <Link to="/clippings" className="nav-btn">Clippings</Link>
+        <Link to="/titles" className="nav-btn">Titles</Link>
+        <Link to="/authors" className="nav-btn">Authors</Link>
       </nav>
     )
   }
