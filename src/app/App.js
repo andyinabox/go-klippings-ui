@@ -1,8 +1,8 @@
 import React from "react";
-import Modal from "react-modal";
-import ReactDOM from "react-dom";
+// import Modal from "react-modal";
+// import ReactDOM from "react-dom";
 
-Modal.setAppElement("#app")
+// Modal.setAppElement("#app")
 
 function App() {
   return (
