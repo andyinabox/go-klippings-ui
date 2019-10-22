@@ -1,10 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const GoogleFontsPlugin = require("google-fonts-webpack-plugin")
 const Dotenv = require("dotenv-webpack");
 
 const webpackEnv = process.env.WEBPACK_ENV
@@ -74,12 +73,19 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "styles.css"
     }),
+    new GoogleFontsPlugin({
+      fonts: [
+        { family: "EB Garamond" },
+        { family: "Open Sans" }
+      ]
+    }),
     new Dotenv()
   ],
   optimization: {
     minimize: isEnvProduction,
     minimizer: [
-      new TerserPlugin()
+      new TerserPlugin(),
+      new OptimizeCSSAssetsPlugin()
     ],
   }
 };
