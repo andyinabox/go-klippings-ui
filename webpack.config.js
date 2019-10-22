@@ -49,7 +49,7 @@ module.exports = function(webpackEnv) {
               options: {
                 name: "[name].[ext]",
                 outputPath: "assets/img/",
-                // publicPath: '../img/'
+                publicPath: '../assets/img/'
               }
             }
           ]

@@ -1,6 +1,7 @@
 import React from "react";
 // import Modal from "react-modal";
 // import ReactDOM from "react-dom";
+import axios from 'axios'
 
 import ViewClippings from './views/ViewClippings'
 import ViewAuthors from './views/ViewAuthors'
@@ -17,17 +18,31 @@ import {
 
 import LayoutHeader from './components/LayoutHeader'
 
+
 class App extends React.Component {
   onDrop = (files) => {
-    files.forEach(file => {
-      console.log(file);
+    this.uploadFiles(files).then( resp => {
+      console.log(resp.data);
     });
+  }
+  uploadFiles = (files) => {
+    const url = process.env.API_HOST + "/api/clippings"
+    const fd = new FormData();
+
+    fd.append('file', files[0]);
+
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    }
+    return axios.post(url, fd, config)
   }
   render() {
     return (
       <ReactDropzone onDrop={this.onDrop}>
         {({ getRootProps }) => (
-          <div {...getRootProps()}>
+          <div className="drop-zone" {...getRootProps()}>
           <Router>
             <LayoutHeader />
             <Switch>

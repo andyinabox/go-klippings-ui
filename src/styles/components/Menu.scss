@@ -1,0 +1,18 @@
+.nav-main {
+  .nav-btn {
+    // @extend %visually-hidden;
+    display: inline-block;
+    // width: 1rem;
+    height: 1rem;
+    // background-size: cover;
+  }
+  .nav-btn-clippings {
+    // background-image: "assets/img/noun_bookmark_6481.png"
+  }
+  .nav-btn-authors {
+    // background-image: "assets/img/noun_User_209881.png"
+  }
+  .nav-btn-titles {
+    // background-image: "assets/img/noun_Book_26886.png"
+  }
+}
