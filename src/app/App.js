@@ -21,9 +21,41 @@ import LayoutHeader from './components/LayoutHeader'
 
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasErrors: false,
+      clippings: [],
+      authors: [],
+      titles: [],
+    };
+  }
+  componentDidMount() {
+    axios.get(process.env.API_HOST + '/api/clippings')
+      .then(res => {
+        this.setState({ clippings: res.data })
+      })
+    axios.get(process.env.API_HOST+ '/api/titles')
+      .then(res => {
+        this.setState({ titles: res.data })
+      })
+    axios.get(process.env.API_HOST + '/api/authors')
+      .then(res => {
+        this.setState({ authors: res.data })
+      })
+  }
   onDrop = (files) => {
-    this.uploadFiles(files).then( resp => {
-      console.log(resp.data);
+    this.uploadFiles(files).then( ({ data }) => {
+      const updated = data.records;
+      console.log(updated);
+
+      // concat new records to existing list
+      this.updateState(previousState => {
+        state.clippings = updated.clippings.concat(state.clippings)
+        state.authors = updated.authors.concat(state.authors)
+        state.titles = updated.titles.concat(state.titles)
+        return state
+      })
     });
   }
   uploadFiles = (files) => {
@@ -47,18 +79,24 @@ class App extends React.Component {
           <Router>
             <LayoutHeader />
             <Switch>
-              <Route exact path="/home">
-                <ViewClippings />
+              <Route exact path="/">
+                <ViewClippings
+                  clippings={this.state.clippings}
+                />
               </Route>
               <Route path="/authors">
-                <ViewAuthors />
+                <ViewAuthors
+                  authors={this.state.authors}
+                />
               </Route>
               <Route path="/titles">
-                <ViewTitles />
+                <ViewTitles
+                  titles={this.state.titles}
+                />
               </Route>
-              <Route exact path="/">
+              {/* <Route exact path="/">
                 <Redirect to="/home" />
-              </Route>
+              </Route> */}
             </Switch>
           </Router>
             </div>
