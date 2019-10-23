@@ -2,13 +2,6 @@ import React from "react";
 // import Modal from "react-modal";
 // import ReactDOM from "react-dom";
 import axios from 'axios'
-
-import ViewClippings from './views/ViewClippings'
-import ViewAuthors from './views/ViewAuthors'
-import ViewTitles from './views/ViewTitles'
-
-// Modal.setAppElement("#app")
-
 import ReactDropzone from "react-dropzone";
 import {
   BrowserRouter as Router,
@@ -18,6 +11,12 @@ import {
 } from "react-router-dom";
 
 import LayoutHeader from './components/LayoutHeader'
+
+import ViewClippings from './views/ViewClippings'
+import ViewAuthors from './views/ViewAuthors'
+import ViewAuthorsSingle from './views/ViewAuthorsSingle'
+import ViewTitles from './views/ViewTitles'
+import ViewTitlesSingle from './views/ViewTitlesSingle'
 
 
 class App extends React.Component {
@@ -72,6 +71,7 @@ class App extends React.Component {
     return axios.post(url, fd, config)
   }
   render() {
+    console.log(this.state);
     return (
       <ReactDropzone onDrop={this.onDrop}>
         {({ getRootProps }) => (
@@ -79,21 +79,23 @@ class App extends React.Component {
           <Router>
             <LayoutHeader />
             <Switch>
-              <Route exact path="/">
-                <ViewClippings
-                  clippings={this.state.clippings}
-                />
-              </Route>
+              <Route path="/authors/:id" component={ViewAuthorsSingle}></Route>
               <Route path="/authors">
                 <ViewAuthors
                   authors={this.state.authors}
                 />
               </Route>
+              <Route path="/titles/:id" component={ViewTitlesSingle}></Route>
               <Route path="/titles">
                 <ViewTitles
                   titles={this.state.titles}
                 />
               </Route>
+                <Route exact path="/">
+                  <ViewClippings
+                    clippings={this.state.clippings}
+                  />
+                </Route>
               {/* <Route exact path="/">
                 <Redirect to="/home" />
               </Route> */}
