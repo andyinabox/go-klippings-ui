@@ -1,6 +1,6 @@
 {
   "name": "go-klippings-ui",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "UI for managing kindle clippings",
   "main": "webpack.config.js",
   "scripts": {
