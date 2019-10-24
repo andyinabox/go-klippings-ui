@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest --setupFiles dotenv/config",
     "start": "webpack-dev-server",
-    "build": "npm run test; webpack --mode production"
+    "build": "npm run test; webpack --mode production",
+    "prism": "prism mock -p 8081 -d ../go-klippings-api/api/openapi.yaml",
+    "start-mock": "npm run start && npm run prism"
   },
   "repository": {
     "type": "git",
@@ -36,6 +38,7 @@
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
     "@beyonk/google-fonts-webpack-plugin": "^1.2.3",
+    "@stoplight/prism-cli": "^3.1.1",
     "@testing-library/react": "^9.3.0",
     "autoprefixer": "^9.6.5",
     "babel-eslint": "^10.0.3",
