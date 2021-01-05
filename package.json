@@ -20,7 +20,7 @@
   "homepage": "https://github.com/andyinabox/go-klippings-ui#readme",
   "dependencies": {
     "@babel/runtime": "^7.6.3",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "css-reset-and-normalize-sass": "^0.1.2",
     "rc-upload": "^2.8.1",
     "react": "^16.10.2",
